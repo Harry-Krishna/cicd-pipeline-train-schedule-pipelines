@@ -1,1 +1,13 @@
-
+pipeline{
+    agent any
+    stages{
+        stage('Build'){
+            steps{
+             git 'https://github.com/Harry-Krishna/cicd-pipeline-train-schedule-pipelines.git'
+             echo 'My first build on gradle'
+             sh './gradlew build --no-daemon'
+             archiveArtifacts artifacts: 'dist/trainSchedule.zip', followSymlinks: false
+            }
+        }
+    }
+}
